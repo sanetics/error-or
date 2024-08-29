@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ErrorOr;
 
 /// <summary>
@@ -129,6 +131,7 @@ public readonly record struct Error
         Dictionary<string, object>? metadata = null) =>
             new(code, description, (ErrorType)type, metadata);
 
+    [JsonConstructor]
     private Error(string code, string description, ErrorType type, Dictionary<string, object>? metadata)
     {
         Code = code;
